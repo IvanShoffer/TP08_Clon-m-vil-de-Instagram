@@ -2,15 +2,6 @@
 
 Aplicacion movil realizada con React Native y Expo. Replica una experiencia basica de Instagram: feed principal, detalle de publicacion y perfil de usuario con grilla de imagenes. Las publicaciones se cargan con Axios desde The Cat API y se renderizan con `FlatList`.
 
-## Como ejecutar
-
-```bash
-cd Tp8
-npm install
-npx expo start
-```
-
-Luego abrir la app desde Expo Go, un emulador Android/iOS o el navegador si se agrega soporte web.
 
 ## Requisitos cubiertos
 
