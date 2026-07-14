@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import ActionBar from './ActionBar';
 
 export default function PostCard({ post, onPress }) {
@@ -12,6 +12,10 @@ export default function PostCard({ post, onPress }) {
       setLikes((value) => value + (next ? 1 : -1));
       return next;
     });
+  };
+
+  const sharePost = () => {
+    Alert.alert('Publicacion compartida', 'El enlace de la publicacion fue copiado.');
   };
 
   return (
@@ -28,7 +32,12 @@ export default function PostCard({ post, onPress }) {
         <Image source={{ uri: post.imageUrl }} style={styles.postImage} />
       </Pressable>
 
-      <ActionBar liked={liked} onToggleLike={toggleLike} />
+      <ActionBar
+        liked={liked}
+        onComment={onPress}
+        onShare={sharePost}
+        onToggleLike={toggleLike}
+      />
 
       <View style={styles.textBlock}>
         <Text style={styles.likes}>{likes.toLocaleString('es-AR')} Me gusta</Text>

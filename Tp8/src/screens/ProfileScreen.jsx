@@ -1,4 +1,5 @@
-import { ActivityIndicator, Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ProfileGridItem from '../components/ProfileGridItem';
 import ProfileHeader from '../components/ProfileHeader';
 import { PROFILE } from '../data/mockData';

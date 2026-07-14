@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ActionBar from '../components/ActionBar';
 import { COMMENTS } from '../data/mockData';
 
-export default function DetailScreen({ route }) {
+export default function DetailScreen({ navigation, route }) {
   const { post } = route.params;
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(post.likes);
@@ -16,6 +17,14 @@ export default function DetailScreen({ route }) {
     });
   };
 
+  const showComments = () => {
+    Alert.alert('Comentarios', 'Desliza hacia abajo para ver todos los comentarios.');
+  };
+
+  const sharePost = () => {
+    Alert.alert('Publicacion compartida', 'El enlace de la publicacion fue copiado.');
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <FlatList
@@ -23,16 +32,25 @@ export default function DetailScreen({ route }) {
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <View>
-            <View style={styles.header}>
+            <Pressable
+              accessibilityLabel="Ir al perfil"
+              onPress={() => navigation.navigate('Profile')}
+              style={styles.header}
+            >
               <Image source={{ uri: post.avatar }} style={styles.avatar} />
               <View>
                 <Text style={styles.username}>{post.username}</Text>
                 <Text style={styles.location}>{post.location}</Text>
               </View>
-            </View>
+            </Pressable>
 
             <Image source={{ uri: post.imageUrl }} style={styles.image} />
-            <ActionBar liked={liked} onToggleLike={toggleLike} />
+            <ActionBar
+              liked={liked}
+              onComment={showComments}
+              onShare={sharePost}
+              onToggleLike={toggleLike}
+            />
 
             <View style={styles.content}>
               <Text style={styles.likes}>{likes.toLocaleString('es-AR')} Me gusta</Text>

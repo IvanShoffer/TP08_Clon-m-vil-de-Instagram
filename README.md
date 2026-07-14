@@ -61,7 +61,7 @@ Tp8/
 
 ## Componentes atomicos y props
 
-`ActionBar.jsx`: renderiza la barra de acciones de una publicacion. Recibe `liked` para pintar el estado visual del boton de like y `onToggleLike` para delegar la interaccion al componente padre.
+`ActionBar.jsx`: renderiza la barra de acciones de una publicacion. Recibe `liked` para pintar el estado visual del boton de like, `onToggleLike` para actualizarlo, `onComment` para abrir los comentarios y `onShare` para confirmar la accion de compartir.
 
 `PostCard.jsx`: representa una publicacion del feed. Recibe `post` con avatar, usuario, ubicacion, imagen, likes y caption. Recibe `onPress` para navegar al detalle. Mantiene localmente el estado interactivo de like del item.
 
@@ -73,7 +73,7 @@ Tp8/
 
 `HomeScreen.jsx`: pantalla principal. Usa `useCatPosts(12)` para cargar publicaciones y muestra el feed con `FlatList`. Navega a `PostDetail` enviando el objeto `post` completo y tambien permite abrir `Profile`.
 
-`DetailScreen.jsx`: pantalla extendida de una publicacion. Lee `route.params.post`, muestra imagen en alta definicion, comentarios simulados, etiquetas y un like funcional con actualizacion inmediata del contador.
+`DetailScreen.jsx`: pantalla extendida de una publicacion. Lee `route.params.post`, muestra imagen en alta definicion, comentarios simulados, etiquetas y un like funcional con actualizacion inmediata del contador. Al tocar la cabecera navega al perfil.
 
 `ProfileScreen.jsx`: pantalla de perfil emulado. Usa `FlatList` con `numColumns={3}` para lograr la grilla simetrica inferior. Cada imagen navega al detalle de publicacion.
 
@@ -111,12 +111,6 @@ La funcion `getCatPosts()` se encuentra en `src/services/catApi.js`. Si la API f
 
 ## Referencia visual
 
-Referencia utilizada: interfaz movil oficial de Instagram observada desde la aplicacion movil y mockups publicos de la comunidad de Figma.
+Referencia utilizada: Instagram UI Kit para mobile de la comunidad de Figma. El archivo enlazado contiene el diseño puntual usado como guia de la interfaz; no es una pagina de resultados ni una coleccion de opciones.
 
-Enlace de referencia sugerido para adjuntar en la entrega:
-
-```text
-https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=instagram%20mobile%20ui
-```
-
-Para la entrega final tambien se pueden adjuntar capturas de la app oficial usadas como guia visual.
+Enlace directo al archivo de referencia: [Instagram UI Kit para mobile en Figma](https://www.figma.com/community/file/1056003846779672834/instagram-ui-kit).

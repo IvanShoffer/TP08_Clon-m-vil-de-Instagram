@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function ActionBar({ liked, onToggleLike }) {
+export default function ActionBar({ liked, onComment, onShare, onToggleLike }) {
   return (
     <View style={styles.container}>
       <View style={styles.leftActions}>
@@ -14,11 +14,19 @@ export default function ActionBar({ liked, onToggleLike }) {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity accessibilityLabel="Comentar" style={styles.actionButton}>
+        <TouchableOpacity
+          accessibilityLabel="Comentar"
+          onPress={onComment}
+          style={styles.actionButton}
+        >
           <Text style={styles.icon}>◇</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity accessibilityLabel="Compartir" style={styles.actionButton}>
+        <TouchableOpacity
+          accessibilityLabel="Compartir"
+          onPress={onShare}
+          style={styles.actionButton}
+        >
           <Text style={styles.icon}>↗</Text>
         </TouchableOpacity>
       </View>
